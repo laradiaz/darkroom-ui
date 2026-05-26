@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "ghost" | "link";
@@ -30,7 +30,7 @@ export function Button({
   children,
   ...rest
 }: ButtonProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const { className: slotClassName, rest: slotRoot } = splitSlotClassName(slotProps?.root);
 
   return (

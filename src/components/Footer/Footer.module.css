@@ -16,8 +16,8 @@
 }
 
 .link {
-  @apply font-sans text-sm text-foreground no-underline hover:text-accent transition-colors rounded-sm;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  @apply font-sans text-sm text-foreground no-underline hover:text-text-muted transition-colors rounded-sm;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
 }
 
 .newsletter {

@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Typography.module.css";
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
@@ -38,7 +38,7 @@ export function Heading({
   children,
   ...rest
 }: HeadingProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const Tag = tagMap[level];
   const rootSlot = splitSlotClassName(slotProps?.root);
 

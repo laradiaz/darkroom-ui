@@ -1,7 +1,7 @@
 @reference "../../theme/index.css";
 .recipeCard {
   @apply block no-underline text-inherit rounded-sm;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
 }
 
 .imageWrap {

@@ -8,7 +8,6 @@ const meta: Meta<typeof Badge> = {
   tags: ["autodocs"],
   argTypes: {
     orientation: { control: "radio", options: ["straight", "tilted"] },
-    tone: { control: "radio", options: ["stamp", "accent", "neutral"] },
   },
 };
 
@@ -19,91 +18,54 @@ export const Default: Story = {
   args: { children: formatStoryName("Default"), variant: "default" },
 };
 
-export const StampGreenStraight: Story = {
+export const StampStraight: Story = {
   args: {
-    children: formatStoryName("StampGreenStraight"),
+    children: formatStoryName("StampStraight"),
     variant: "stamp",
-    tone: "stamp",
     orientation: "straight",
   },
 };
 
-export const StampGreenTilted: Story = {
+export const StampTilted: Story = {
   args: {
-    children: formatStoryName("StampGreenTilted"),
+    children: formatStoryName("StampTilted"),
     variant: "stamp",
-    tone: "stamp",
     orientation: "tilted",
   },
 };
 
-export const StampAccentTilted: Story = {
+export const OutlineStraight: Story = {
   args: {
-    children: formatStoryName("StampAccentTilted"),
-    variant: "stamp",
-    tone: "accent",
-    orientation: "tilted",
-  },
-};
-
-export const OutlineNeutral: Story = {
-  args: {
-    children: formatStoryName("OutlineNeutral"),
+    children: formatStoryName("OutlineStraight"),
     variant: "outline",
-    tone: "neutral",
     orientation: "straight",
   },
 };
 
-export const OutlineAccentTilted: Story = {
+export const OutlineTilted: Story = {
   args: {
-    children: formatStoryName("OutlineAccentTilted"),
+    children: formatStoryName("OutlineTilted"),
     variant: "outline",
-    tone: "accent",
     orientation: "tilted",
-  },
-};
-
-export const OutlineStampStraight: Story = {
-  args: {
-    children: formatStoryName("OutlineStampStraight"),
-    variant: "outline",
-    tone: "stamp",
-    orientation: "straight",
   },
 };
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="flex flex-col gap-10 p-4">
-      <section className="flex flex-wrap gap-8 items-center">
-        <Badge variant="stamp" tone="stamp" orientation="straight">
-          {formatStoryName("StampGreenStraight")}
-        </Badge>
-        <Badge variant="stamp" tone="stamp" orientation="tilted">
-          {formatStoryName("StampGreenTilted")}
-        </Badge>
-        <Badge variant="stamp" tone="accent" orientation="straight">
-          {formatStoryName("StampAccentStraight")}
-        </Badge>
-        <Badge variant="stamp" tone="accent" orientation="tilted">
-          {formatStoryName("StampAccentTilted")}
-        </Badge>
-      </section>
-      <section className="flex flex-wrap gap-8 items-center">
-        <Badge variant="outline" tone="neutral" orientation="straight">
-          {formatStoryName("OutlineNeutral")}
-        </Badge>
-        <Badge variant="outline" tone="stamp" orientation="tilted">
-          {formatStoryName("OutlineStampTilted")}
-        </Badge>
-        <Badge variant="outline" tone="accent" orientation="straight">
-          {formatStoryName("OutlineAccentStraight")}
-        </Badge>
-        <Badge variant="outline" tone="accent" orientation="tilted">
-          {formatStoryName("OutlineAccentTilted")}
-        </Badge>
-      </section>
+    <div className="flex flex-wrap gap-8 items-center p-4">
+      <Badge variant="default">{formatStoryName("Default")}</Badge>
+      <Badge variant="stamp" orientation="straight">
+        {formatStoryName("StampStraight")}
+      </Badge>
+      <Badge variant="stamp" orientation="tilted">
+        {formatStoryName("StampTilted")}
+      </Badge>
+      <Badge variant="outline" orientation="straight">
+        {formatStoryName("OutlineStraight")}
+      </Badge>
+      <Badge variant="outline" orientation="tilted">
+        {formatStoryName("OutlineTilted")}
+      </Badge>
     </div>
   ),
 };

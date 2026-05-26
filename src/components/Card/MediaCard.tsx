@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ImgHTMLAttributes, ReactNode } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Card.module.css";
 
 export type MediaCardSlotProps = {
@@ -28,7 +28,7 @@ export function MediaCard({
   children,
   ...rest
 }: MediaCardProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const imageSlot = splitSlotClassName(slotProps?.image);
   const overlaySlot = splitSlotClassName(slotProps?.overlay);

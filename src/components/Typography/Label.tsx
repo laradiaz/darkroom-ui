@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Typography.module.css";
 
 export type LabelSlotProps = {
@@ -14,7 +14,7 @@ export type LabelProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 export function Label({ unstyled, slotProps, className, children, ...rest }: LabelProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
 
   return (

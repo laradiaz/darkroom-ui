@@ -1,4 +1,8 @@
 export * from "./components";
-export { useLabDarkMode, type LabTheme } from "./hooks/useLabDarkMode";
-export { LabUIProvider, useLabUIConfig, type LabUIConfig } from "./config/LabUIProvider";
+export { useDarkroomDarkMode, type DarkroomTheme } from "./hooks/useDarkroomDarkMode";
+export {
+  DarkroomUIProvider,
+  useDarkroomUIConfig,
+  type DarkroomUIConfig,
+} from "./config/DarkroomUIProvider";
 export { cn } from "./utils/cn";

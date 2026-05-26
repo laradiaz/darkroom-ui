@@ -1,7 +1,7 @@
 @reference "../../theme/index.css";
 .button {
   @apply inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 cursor-pointer;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
   @apply disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .primary:hover:not(:disabled) {
-  @apply bg-accent text-paper;
+  @apply bg-paper-dark text-foreground border border-border;
 }
 
 .ghost {
@@ -22,11 +22,11 @@
 }
 
 .link {
-  @apply bg-transparent text-accent border-0 p-0 underline-offset-4;
+  @apply bg-transparent text-foreground border-0 p-0 underline-offset-4;
 }
 
 .link:hover:not(:disabled) {
-  @apply text-accent-hover underline;
+  @apply text-text-muted underline;
 }
 
 .sm {

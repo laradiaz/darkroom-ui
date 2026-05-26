@@ -2,7 +2,7 @@
 
 .link {
   @apply no-underline text-foreground transition-colors rounded-sm;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
 }
 
 .linkIcon {
@@ -10,7 +10,7 @@
 }
 
 .linkIcon:hover {
-  @apply text-accent;
+  @apply text-text-muted;
 }
 
 .linkText {
@@ -19,7 +19,7 @@
 
 .linkText:hover .platform,
 .linkText:hover .label {
-  @apply text-accent;
+  @apply text-text-muted;
 }
 
 .icon {
@@ -27,7 +27,7 @@
 }
 
 .linkIcon:hover .icon {
-  @apply text-accent;
+  @apply text-text-muted;
 }
 
 .platform {

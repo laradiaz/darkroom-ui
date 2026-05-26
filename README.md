@@ -1,36 +1,36 @@
-# lab-ui
+# darkroom-ui
 
-Editorial React component library with CSS-variable theming and light/dark mode.
+Monochrome editorial React component library — warm paper and charcoal tones, CSS-variable light/dark mode, no accent palette.
+
+**Repository:** [github.com/laradiaz/darkroom-ui](https://github.com/laradiaz/darkroom-ui) (private)
 
 ## Install
 
 ```bash
-npm install lab-ui
+npm install darkroom-ui
 # or
-pnpm add lab-ui
+pnpm add darkroom-ui
+# or from GitHub (private)
+pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.1.0
 ```
 
 **Peer dependencies:** `react` and `react-dom` (v18+).
 
-Before publishing, verify the package name is available: `npm view lab-ui`.
+Before publishing to npm, verify the name: `npm view darkroom-ui`.
 
 ## Usage
 
 Import component styles once in your app entry (~35 KB):
 
 ```tsx
-import "lab-ui/style.css";
+import "darkroom-ui/style.css";
 ```
 
-Load fonts separately — bundled latin subsets (~87 KB woff2), or use your own:
+Load fonts separately (optional, ~87 KB woff2):
 
 ```tsx
-import "lab-ui/fonts.css";
+import "darkroom-ui/fonts.css";
 ```
-
-Or host fonts yourself (Google Fonts, `@fontsource`, etc.) and only import `style.css`. Typography uses `"Cormorant Garamond"` and `"DM Sans"`.
-
-Use components:
 
 ```tsx
 import {
@@ -40,21 +40,21 @@ import {
   NavBar,
   Hero,
   Footer,
-  useLabDarkMode,
-  LabUIProvider,
-} from "lab-ui";
+  useDarkroomDarkMode,
+  DarkroomUIProvider,
+} from "darkroom-ui";
 
 function App() {
-  const { toggle, isDark } = useLabDarkMode();
+  const { toggle, isDark } = useDarkroomDarkMode();
 
   return (
-    <LabUIProvider config={{ containerSize: "lg" }}>
+    <DarkroomUIProvider config={{ containerSize: "lg" }}>
       <button type="button" onClick={toggle}>
         {isDark ? "Light" : "Dark"}
       </button>
       <Heading level={1}>Hello</Heading>
       <Button variant="primary">Get started</Button>
-    </LabUIProvider>
+    </DarkroomUIProvider>
   );
 }
 ```
@@ -62,54 +62,45 @@ function App() {
 ### Tree-shaking entry (no CSS side effects)
 
 ```tsx
-import { Button } from "lab-ui/core";
-import "lab-ui/style.css";
-import "lab-ui/fonts.css";
+import { Button } from "darkroom-ui/core";
+import "darkroom-ui/style.css";
+import "darkroom-ui/fonts.css";
 ```
 
 ### Per-component subpaths
 
 ```tsx
-import { Button } from "lab-ui/button";
-import { Hero } from "lab-ui/hero";
-import "lab-ui/style.css";
+import { Button } from "darkroom-ui/button";
+import { Hero } from "darkroom-ui/hero";
+import "darkroom-ui/style.css";
 ```
 
 ### Design tokens only
 
 ```css
-@import "lab-ui/tokens.css";
+@import "darkroom-ui/tokens.css";
 ```
 
 ### CSS bundle sizes
 
 | Import | Approx. size |
 |--------|----------------|
-| `lab-ui/style.css` | ~35 KB (Tailwind + component styles) |
-| `lab-ui/fonts.css` | ~1 KB CSS + ~87 KB woff2 in `lib/fonts/` |
-| `lab-ui/tokens.css` | ~1 KB (CSS variables only) |
+| `darkroom-ui/style.css` | ~35 KB |
+| `darkroom-ui/fonts.css` | ~1 KB CSS + ~87 KB woff2 |
+| `darkroom-ui/tokens.css` | ~1 KB |
 
 ## Optional provider
 
-`LabUIProvider` sets defaults for the whole tree:
+`DarkroomUIProvider` sets defaults for the whole tree:
 
 | Config | Purpose |
 |--------|---------|
-| `unstyled` | Skip CSS module classes (bring your own `className`) |
-| `containerSize` | Default `Container` width in layout |
-| `socialLinkMode` | Default `SocialLink` display mode |
-| `themeStorageKey` | Reserved for theme persistence customization |
+| `unstyled` | Skip CSS module classes |
+| `containerSize` | Default `Container` width |
+| `socialLinkMode` | Default `SocialLink` mode |
+| `themeStorageKey` | Reserved for theme persistence |
 
-All components accept optional `unstyled` and `slotProps` for pass-through DOM customization. Complex components expose named slots (e.g. `Hero` → `media`, `overlay`, `content`; `RecipeCard` → `image`, `title`).
-
-```tsx
-<Hero
-  slotProps={{ content: { className: "text-left" } }}
-  aria-label="Featured recipes"
-/>
-<Button slotProps={{ root: { "data-testid": "submit" } }} />
-<LabUIProvider config={{ unstyled: true }}>{/* all components skip module classes */}</LabUIProvider>
-```
+All components accept `unstyled` and `slotProps` for DOM customization.
 
 ## Dark mode
 
@@ -119,7 +110,7 @@ Dark mode uses the `dark` class on `<html>`:
 <html class="dark">
 ```
 
-Or use `useLabDarkMode()` — it toggles `html.dark` and persists preference to `localStorage`.
+Or use `useDarkroomDarkMode()` — toggles `html.dark` and persists to `localStorage`.
 
 ## Components
 
@@ -127,17 +118,17 @@ Or use `useLabDarkMode()` — it toggles `html.dark` and persists preference to 
 |-----------|-------------|
 | `Heading`, `Text`, `Label` | Typography |
 | `Button` | primary / ghost / link |
-| `Badge` | Category tags |
+| `Badge` | default / stamp / outline |
 | `RecipeCard`, `MediaCard` | Content cards |
 | `Divider` | Section divider |
 | `ContentGrid` | Responsive grid |
-| `NavBar` | Navigation with accessible mobile menu |
+| `NavBar` | Navigation |
 | `Hero` | Image/video hero |
 | `NewsletterSignup` | Email form |
 | `SocialLink` | Icon or text social link |
 | `Figure` | Image with caption |
 | `Footer` | Site footer |
-| `Page`, `Container`, `Section` | Layout primitives |
+| `Page`, `Container`, `Section` | Layout |
 
 ## Development
 
@@ -145,7 +136,7 @@ Or use `useLabDarkMode()` — it toggles `html.dark` and persists preference to 
 pnpm install
 pnpm run build
 pnpm run check-publish
-pnpm run check-publish:full   # also runs build-storybook
+pnpm run check-publish:full
 pnpm run storybook
 ```
 
@@ -158,7 +149,7 @@ pnpm run check-publish
 npm publish --access public
 ```
 
-Or `./scripts/release.sh patch` (runs build via `prepublishOnly`).
+Or `./scripts/release.sh patch`.
 
 ## License
 

@@ -6,5 +6,5 @@
 .input {
   @apply flex-1 font-sans text-sm px-4 py-3 bg-paper border border-border text-foreground rounded-sm;
   @apply placeholder:text-text-muted;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-accent focus-visible:border-accent;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-foreground focus-visible:border-foreground;
 }

@@ -6,7 +6,7 @@ import type {
 } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Hero.module.css";
 
 export type HeroSlotProps = {
@@ -38,7 +38,7 @@ export function Hero({
   "aria-label": ariaLabel,
   ...rest
 }: HeroProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const hasMedia = Boolean(videoSrc || image);
   const alt = imageAlt ?? (image ? "" : undefined);
 

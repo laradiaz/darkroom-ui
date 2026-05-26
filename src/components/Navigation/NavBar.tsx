@@ -9,7 +9,7 @@ import {
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./NavBar.module.css";
 
 export type NavItem = {
@@ -44,7 +44,7 @@ export function NavBar({
   className,
   ...rest
 }: NavBarProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const [open, setOpen] = useState(false);
   const navId = useId();
 

@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Typography.module.css";
 
 export type TextSize = "body" | "subtitle" | "caption";
@@ -37,7 +37,7 @@ export function Text({
   children,
   ...rest
 }: TextProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
 
   return (

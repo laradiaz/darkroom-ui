@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, HTMLAttributes, ImgHTMLAttributes } from "re
 import { Label } from "../Typography";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Card.module.css";
 
 export type RecipeCardSlotProps = {
@@ -37,7 +37,7 @@ export function RecipeCard({
   className,
   ...rest
 }: RecipeCardProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const imageWrapSlot = splitSlotClassName(slotProps?.imageWrap);
   const imageSlot = splitSlotClassName(slotProps?.image);

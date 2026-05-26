@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Layout.module.css";
 
 export type PageSlotProps = {
@@ -15,7 +15,7 @@ export type PageProps = HTMLAttributes<HTMLDivElement> & {
 
 /** Root page shell — min height, paper background, default text color. */
 export function Page({ unstyled, slotProps, className, children, ...rest }: PageProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
 
   return (

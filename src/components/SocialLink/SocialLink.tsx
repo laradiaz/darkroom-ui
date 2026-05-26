@@ -1,9 +1,9 @@
 import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import { useLabUIConfig } from "../../config/LabUIProvider";
+import { useDarkroomUIConfig } from "../../config/DarkroomUIProvider";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import { SocialPlatformIcon, socialPlatformLabels, type SocialPlatform } from "./icons";
 import styles from "./SocialLink.module.css";
 
@@ -40,8 +40,8 @@ export function SocialLink({
   className,
   ...rest
 }: SocialLinkProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
-  const { socialLinkMode: defaultMode } = useLabUIConfig();
+  const isUnstyled = useDarkroomUnstyled(unstyled);
+  const { socialLinkMode: defaultMode } = useDarkroomUIConfig();
   const resolvedMode = mode ?? defaultMode ?? "icon";
   const label = platformLabel ?? socialPlatformLabels[platform];
   const secondary = children ?? label;

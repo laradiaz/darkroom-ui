@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Grid.module.css";
 
 export type ContentGridSlotProps = {
@@ -23,7 +23,7 @@ export function ContentGrid({
   children,
   ...rest
 }: ContentGridProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
 
   return (

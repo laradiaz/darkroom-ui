@@ -2,7 +2,7 @@ import type { FormHTMLAttributes, InputHTMLAttributes } from "react";
 import { Button, type ButtonProps } from "../Button";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./NewsletterSignup.module.css";
 
 export type NewsletterSignupSlotProps = {
@@ -31,7 +31,7 @@ export function NewsletterSignup({
   className,
   ...rest
 }: NewsletterSignupProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const inputSlot = splitSlotClassName(slotProps?.input);
   const submitSlot = slotProps?.submit ?? {};

@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Footer.module.css";
 
 export type FooterLink = {
@@ -44,7 +44,7 @@ export function Footer({
   slotProps,
   className,
 }: FooterProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const gridSlot = splitSlotClassName(slotProps?.grid);
   const columnSlot = splitSlotClassName(slotProps?.column);

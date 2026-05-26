@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from "react";
-import { useLabUIConfig } from "../../config/LabUIProvider";
+import { useDarkroomUIConfig } from "../../config/DarkroomUIProvider";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import { Container, type ContainerSize } from "./Container";
 import styles from "./Layout.module.css";
 
@@ -34,8 +34,8 @@ export function Section({
   children,
   ...rest
 }: SectionProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
-  const { containerSize: defaultContainerSize } = useLabUIConfig();
+  const isUnstyled = useDarkroomUnstyled(unstyled);
+  const { containerSize: defaultContainerSize } = useDarkroomUIConfig();
   const resolvedSize = containerSize ?? defaultContainerSize ?? "lg";
   const rootSlot = splitSlotClassName(slotProps?.root);
 

@@ -2,7 +2,7 @@ import { useId, type HTMLAttributes, type ImgHTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Figure.module.css";
 
 export type FigureAspect = "square" | "video" | "portrait" | "wide";
@@ -36,7 +36,7 @@ export function Figure({
   className,
   ...rest
 }: FigureProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const captionId = useId();
   const rootSlot = splitSlotClassName(slotProps?.root);
   const imageWrapSlot = splitSlotClassName(slotProps?.imageWrap);

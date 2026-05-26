@@ -2,7 +2,7 @@ import type { HTMLAttributes } from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Layout.module.css";
 
 export type ContainerSize = "narrow" | "md" | "lg" | "xl" | "full";
@@ -26,7 +26,7 @@ export function Container({
   children,
   ...rest
 }: ContainerProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
 
   return (

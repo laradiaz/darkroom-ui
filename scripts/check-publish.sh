@@ -16,8 +16,8 @@ require_file() {
   [[ -f "$path" ]] || fail "missing $path"
 }
 
-require_file "$LIB/lab-ui.mjs"
-require_file "$LIB/lab-ui.cjs"
+require_file "$LIB/darkroom-ui.mjs"
+require_file "$LIB/darkroom-ui.cjs"
 require_file "$LIB/style.css"
 require_file "$LIB/fonts.css"
 require_file "$LIB/tokens.css"
@@ -33,7 +33,7 @@ require_file "$LIB/core.cjs"
 require_file "$LIB/button.mjs"
 require_file "$LIB/badge.mjs"
 
-if [[ "${LAB_UI_CHECK_STORYBOOK:-0}" == "1" ]]; then
+if [[ "${DARKROOM_UI_CHECK_STORYBOOK:-0}" == "1" ]]; then
   echo "check-publish: building storybook..."
   (cd "$ROOT" && pnpm run build-storybook)
 fi

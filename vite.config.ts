@@ -6,7 +6,7 @@ import dts from "vite-plugin-dts";
 const isStorybook = Boolean(process.env.STORYBOOK);
 
 const libEntries = {
-  "lab-ui": resolve(__dirname, "src/index.ts"),
+  "darkroom-ui": resolve(__dirname, "src/index.ts"),
   style: resolve(__dirname, "src/entries/style.ts"),
   core: resolve(__dirname, "src/core.ts"),
   button: resolve(__dirname, "src/entries/button.ts"),

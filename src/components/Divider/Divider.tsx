@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
-import { useLabUnstyled } from "../../utils/useLabUnstyled";
+import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Divider.module.css";
 
 export type DividerSlotProps = {
@@ -22,7 +22,7 @@ export function Divider({
   className,
   ...rest
 }: DividerProps) {
-  const isUnstyled = useLabUnstyled(unstyled);
+  const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const textSlot = splitSlotClassName(slotProps?.text);
 

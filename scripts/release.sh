@@ -8,4 +8,4 @@ pnpm run build
 pnpm run check-publish
 npm version "$BUMP"
 npm publish --access public
-echo "Published lab-ui@$(node -p "require('./package.json').version")"
+echo "Published darkroom-ui@$(node -p "require('./package.json').version")"

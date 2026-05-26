@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 
-const STORAGE_KEY = "lab-ui-theme";
+const STORAGE_KEY = "darkroom-ui-theme";
 
-export type LabTheme = "light" | "dark" | "system";
+export type DarkroomTheme = "light" | "dark" | "system";
 
 function getSystemTheme(): "light" | "dark" {
   if (typeof window === "undefined") return "light";
@@ -13,15 +13,15 @@ function applyTheme(resolved: "light" | "dark") {
   document.documentElement.classList.toggle("dark", resolved === "dark");
 }
 
-function resolveTheme(theme: LabTheme): "light" | "dark" {
+function resolveTheme(theme: DarkroomTheme): "light" | "dark" {
   if (theme === "system") return getSystemTheme();
   return theme;
 }
 
-export function useLabDarkMode(defaultTheme: LabTheme = "system") {
-  const [theme, setThemeState] = useState<LabTheme>(() => {
+export function useDarkroomDarkMode(defaultTheme: DarkroomTheme = "system") {
+  const [theme, setThemeState] = useState<DarkroomTheme>(() => {
     if (typeof window === "undefined") return defaultTheme;
-    const stored = localStorage.getItem(STORAGE_KEY) as LabTheme | null;
+    const stored = localStorage.getItem(STORAGE_KEY) as DarkroomTheme | null;
     return stored ?? defaultTheme;
   });
 
@@ -39,7 +39,7 @@ export function useLabDarkMode(defaultTheme: LabTheme = "system") {
     return () => mq.removeEventListener("change", handler);
   }, [theme]);
 
-  const setTheme = useCallback((next: LabTheme) => {
+  const setTheme = useCallback((next: DarkroomTheme) => {
     setThemeState(next);
     localStorage.setItem(STORAGE_KEY, next);
   }, []);

@@ -1,20 +1,24 @@
 {
-  "name": "lab-ui",
+  "name": "darkroom-ui",
   "version": "0.1.0",
-  "description": "Editorial React component library with CSS-variable theming and light/dark mode",
+  "description": "Monochrome editorial React component library with CSS-variable light/dark theming",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:laradiaz/darkroom-ui.git"
+  },
   "files": ["lib"],
-  "main": "./lib/lab-ui.cjs",
-  "module": "./lib/lab-ui.mjs",
-  "types": "./lib/lab-ui.d.ts",
+  "main": "./lib/darkroom-ui.cjs",
+  "module": "./lib/darkroom-ui.mjs",
+  "types": "./lib/darkroom-ui.d.ts",
   "style": "./lib/style.css",
   "exports": {
     ".": {
-      "types": "./lib/lab-ui.d.ts",
-      "import": "./lib/lab-ui.mjs",
-      "require": "./lib/lab-ui.cjs",
-      "default": "./lib/lab-ui.mjs"
+      "types": "./lib/darkroom-ui.d.ts",
+      "import": "./lib/darkroom-ui.mjs",
+      "require": "./lib/darkroom-ui.cjs",
+      "default": "./lib/darkroom-ui.mjs"
     },
     "./core": {
       "types": "./lib/core.d.ts",
@@ -71,7 +75,7 @@
     "storybook": "STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "STORYBOOK=true storybook build",
     "check-publish": "bash scripts/check-publish.sh",
-    "check-publish:full": "LAB_UI_CHECK_STORYBOOK=1 bash scripts/check-publish.sh",
+    "check-publish:full": "DARKROOM_UI_CHECK_STORYBOOK=1 bash scripts/check-publish.sh",
     "prepublishOnly": "pnpm run build && pnpm run check-publish"
   },
   "peerDependencies": {
@@ -101,5 +105,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["react", "components", "ui", "tailwind", "design-system"]
+  "keywords": ["react", "components", "ui", "tailwind", "monochrome", "dark-mode"]
 }
