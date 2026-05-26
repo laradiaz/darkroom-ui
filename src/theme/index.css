@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@theme {
+  --color-paper: var(--color-paper);
+  --color-paper-dark: var(--color-paper-dark);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-border: var(--color-border);
+  --color-stamp: var(--color-stamp);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+@variant dark (&:where(html.dark, html.dark *));
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+}

@@ -1,0 +1,39 @@
+@reference "../../theme/index.css";
+
+.figure {
+  @apply m-0 w-full max-w-3xl;
+}
+
+.imageWrap {
+  @apply relative overflow-hidden rounded-sm w-full;
+  box-shadow: 0 4px 24px var(--color-shadow-soft);
+}
+
+.image {
+  @apply block w-full object-cover;
+}
+
+.square .image {
+  aspect-ratio: 1 / 1;
+}
+
+.video .image {
+  aspect-ratio: 16 / 9;
+}
+
+.portrait .image {
+  aspect-ratio: 3 / 4;
+}
+
+.wide .image {
+  aspect-ratio: 21 / 9;
+}
+
+.overlay {
+  @apply absolute inset-0 flex items-end p-4 pointer-events-none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.caption {
+  @apply mt-3 font-sans text-sm text-text-muted text-center;
+}

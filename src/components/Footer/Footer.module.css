@@ -1,0 +1,33 @@
+@reference "../../theme/index.css";
+.footer {
+  @apply border-t border-border bg-paper px-6 py-12;
+}
+
+.grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto;
+}
+
+.columnTitle {
+  @apply font-sans text-xs uppercase tracking-widest text-text-muted m-0 mb-4 font-medium;
+}
+
+.linkList {
+  @apply list-none m-0 p-0 flex flex-col gap-2;
+}
+
+.link {
+  @apply font-sans text-sm text-foreground no-underline hover:text-accent transition-colors rounded-sm;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.newsletter {
+  @apply col-span-full lg:col-span-1;
+}
+
+.social {
+  @apply flex flex-wrap gap-8 justify-center mt-10 pt-8 border-t border-border max-w-6xl mx-auto;
+}
+
+.copyright {
+  @apply text-center font-sans text-xs text-text-muted mt-8 m-0;
+}

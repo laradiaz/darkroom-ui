@@ -1,0 +1,49 @@
+@reference "../../theme/index.css";
+
+.navBar {
+  @apply flex items-center justify-between gap-6 px-6 py-4 border-b border-border bg-paper relative;
+}
+
+.logo {
+  @apply shrink-0 font-display text-xl text-foreground;
+}
+
+.menuButton {
+  @apply md:hidden flex flex-col gap-1.5 p-2 cursor-pointer border-0 bg-transparent rounded-sm;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.menuIcon {
+  @apply flex flex-col gap-1.5;
+}
+
+.menuIcon span {
+  @apply block w-6 h-0.5 bg-foreground transition-transform;
+}
+
+.visuallyHidden {
+  @apply sr-only;
+}
+
+.nav {
+  @apply hidden md:flex items-center gap-8 flex-1 justify-end;
+}
+
+.navOpen {
+  @apply flex flex-col absolute top-full left-0 right-0 bg-paper border-b border-border p-6 gap-6 z-50;
+  @apply md:static md:flex md:flex-row md:border-0 md:p-0 md:bg-transparent;
+}
+
+.list {
+  @apply flex flex-col md:flex-row gap-4 md:gap-8 list-none m-0 p-0;
+}
+
+.link {
+  @apply font-sans text-sm text-foreground no-underline uppercase tracking-wider rounded-sm;
+  @apply hover:text-accent transition-colors;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.cta {
+  @apply shrink-0;
+}

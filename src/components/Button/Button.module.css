@@ -1,0 +1,48 @@
+@reference "../../theme/index.css";
+.button {
+  @apply inline-flex items-center justify-center font-sans font-medium transition-colors duration-200 cursor-pointer;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.primary {
+  @apply bg-foreground text-paper border border-transparent;
+}
+
+.primary:hover:not(:disabled) {
+  @apply bg-accent text-paper;
+}
+
+.ghost {
+  @apply bg-transparent text-foreground border border-border;
+}
+
+.ghost:hover:not(:disabled) {
+  @apply border-foreground bg-paper-dark;
+}
+
+.link {
+  @apply bg-transparent text-accent border-0 p-0 underline-offset-4;
+}
+
+.link:hover:not(:disabled) {
+  @apply text-accent-hover underline;
+}
+
+.sm {
+  @apply text-xs px-4 py-2 rounded-sm;
+}
+
+.md {
+  @apply text-sm px-6 py-3 rounded-sm;
+}
+
+.lg {
+  @apply text-base px-8 py-4 rounded-sm;
+}
+
+.link.sm,
+.link.md,
+.link.lg {
+  @apply px-0 py-0;
+}

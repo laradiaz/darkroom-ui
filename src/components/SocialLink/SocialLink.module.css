@@ -1,0 +1,39 @@
+@reference "../../theme/index.css";
+
+.link {
+  @apply no-underline text-foreground transition-colors rounded-sm;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.linkIcon {
+  @apply inline-flex;
+}
+
+.linkIcon:hover {
+  @apply text-accent;
+}
+
+.linkText {
+  @apply inline-flex flex-col gap-1;
+}
+
+.linkText:hover .platform,
+.linkText:hover .label {
+  @apply text-accent;
+}
+
+.icon {
+  @apply inline-flex text-foreground;
+}
+
+.linkIcon:hover .icon {
+  @apply text-accent;
+}
+
+.platform {
+  @apply font-sans text-xs uppercase tracking-widest text-text-muted;
+}
+
+.label {
+  @apply font-display text-lg text-foreground;
+}

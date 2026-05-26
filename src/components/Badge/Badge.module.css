@@ -1,0 +1,29 @@
+@reference "../../theme/index.css";
+
+.badge {
+  @apply inline-block text-xs font-medium uppercase tracking-[0.15em];
+}
+
+.default {
+  @apply font-sans text-text-muted;
+}
+
+.stamp {
+  @apply font-mono border border-dashed px-3 py-1;
+}
+
+.outline {
+  @apply font-sans border border-solid border-border text-foreground px-3 py-1 rounded-sm;
+}
+
+.toneStamp {
+  @apply text-stamp border-stamp;
+}
+
+.toneAccent {
+  @apply text-accent border-accent;
+}
+
+.tilted {
+  transform: rotate(-2.5deg);
+}

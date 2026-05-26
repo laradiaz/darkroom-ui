@@ -1,0 +1,37 @@
+:root {
+  --color-paper: #faf9f7;
+  --color-paper-dark: #f3f1ed;
+  --color-text: #2d2a26;
+  --color-text-muted: #5c5651;
+  --color-accent: #b84232;
+  --color-accent-hover: #9e3829;
+  --color-border: #d4cfc7;
+  --color-stamp: #3a6648;
+  --color-grid-dot: rgba(45, 42, 38, 0.03);
+  --color-body-gradient-end: #f5f3ef;
+  --color-shadow: rgba(45, 42, 38, 0.08);
+  --color-shadow-hover: rgba(45, 42, 38, 0.1);
+  --color-shadow-soft: rgba(45, 42, 38, 0.06);
+  --background: var(--color-paper);
+  --foreground: var(--color-text);
+  color-scheme: light;
+}
+
+html.dark {
+  --color-paper: #1c1917;
+  --color-paper-dark: #262220;
+  --color-text: #f5f3ef;
+  --color-text-muted: #9c958c;
+  --color-accent: #f07060;
+  --color-accent-hover: #e85d4c;
+  --color-border: #3f3a36;
+  --color-stamp: #6aab7a;
+  --color-grid-dot: rgba(255, 255, 255, 0.04);
+  --color-body-gradient-end: #141210;
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --color-shadow-hover: rgba(0, 0, 0, 0.45);
+  --color-shadow-soft: rgba(0, 0, 0, 0.25);
+  --background: var(--color-paper);
+  --foreground: var(--color-text);
+  color-scheme: dark;
+}

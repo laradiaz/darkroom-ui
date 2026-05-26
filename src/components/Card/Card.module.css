@@ -1,0 +1,49 @@
+@reference "../../theme/index.css";
+.recipeCard {
+  @apply block no-underline text-inherit rounded-sm;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+}
+
+.imageWrap {
+  @apply overflow-hidden rounded-sm mb-4;
+  box-shadow: 0 4px 24px var(--color-shadow-soft);
+}
+
+.recipeCard:hover .imageWrap {
+  box-shadow: 0 8px 32px var(--color-shadow-hover);
+}
+
+.image {
+  @apply w-full aspect-[4/3] object-cover transition-transform duration-500;
+}
+
+.recipeCard:hover .image {
+  @apply scale-105;
+}
+
+.content {
+  @apply flex flex-col gap-2;
+}
+
+.title {
+  @apply font-display text-2xl text-foreground font-normal m-0 leading-tight;
+}
+
+.subtitle {
+  @apply font-sans text-sm text-text-muted m-0;
+}
+
+.mediaCard {
+  @apply relative overflow-hidden rounded-sm;
+  box-shadow: 0 4px 24px var(--color-shadow-soft);
+}
+
+.mediaImage {
+  @apply w-full aspect-[16/9] object-cover;
+}
+
+.mediaOverlay {
+  @apply absolute inset-0 flex flex-col justify-end p-6;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
+  @apply text-paper;
+}

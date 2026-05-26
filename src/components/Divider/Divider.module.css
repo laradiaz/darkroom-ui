@@ -1,0 +1,18 @@
+@reference "../../theme/index.css";
+.divider {
+  @apply flex items-center gap-4 w-full my-8;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  @apply flex-1 h-px bg-border;
+}
+
+.divider:not(:has(.text))::after {
+  display: none;
+}
+
+.text {
+  @apply font-sans text-sm text-text-muted whitespace-nowrap shrink-0;
+}
