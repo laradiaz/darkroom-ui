@@ -11,7 +11,7 @@ npm install darkroom-ui
 # or
 pnpm add darkroom-ui
 # or from GitHub (private)
-pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.1.0
+pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.0
 ```
 
 **Peer dependencies:** `react` and `react-dom` (v18+).
