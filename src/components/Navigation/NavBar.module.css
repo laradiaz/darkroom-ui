@@ -8,23 +8,6 @@
   @apply shrink-0 font-display text-xl text-foreground;
 }
 
-.menuButton {
-  @apply md:hidden flex flex-col gap-1.5 p-2 cursor-pointer border-0 bg-transparent rounded-sm;
-  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
-}
-
-.menuIcon {
-  @apply flex flex-col gap-1.5;
-}
-
-.menuIcon span {
-  @apply block w-6 h-0.5 bg-foreground transition-transform;
-}
-
-.visuallyHidden {
-  @apply sr-only;
-}
-
 .nav {
   @apply hidden md:flex items-center gap-8 flex-1 justify-end;
 }

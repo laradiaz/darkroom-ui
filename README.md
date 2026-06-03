@@ -48,13 +48,13 @@ import {
 } from "darkroom-ui";
 
 function App() {
-  const { toggle, isDark } = useDarkroomDarkMode();
+  const { toggle, darkModeEnabled } = useDarkroomDarkMode();
 
   return (
     <DarkroomUIProvider config={{ containerSize: "lg" }}>
-      <button type="button" onClick={toggle}>
-        {isDark ? "Light" : "Dark"}
-      </button>
+      <Button type="button" variant="ghost" onClick={toggle}>
+        {darkModeEnabled ? "Light" : "Dark"}
+      </Button>
       <Heading level={1}>Hello</Heading>
       <Button variant="primary">Get started</Button>
     </DarkroomUIProvider>
@@ -113,7 +113,7 @@ Dark mode uses the `dark` class on `<html>`:
 <html class="dark">
 ```
 
-Or use `useDarkroomDarkMode()` — toggles `html.dark` and persists to `localStorage`.
+Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorage`, and exposes `darkModeEnabled`, `toggle`, and `setTheme`.
 
 ## Components
 
@@ -121,6 +121,7 @@ Or use `useDarkroomDarkMode()` — toggles `html.dark` and persists to `localSto
 |-----------|-------------|
 | `Heading`, `Text`, `Label` | Typography |
 | `Button` | primary / ghost / link |
+| `NavMenuButton` | Mobile nav menu toggle (hamburger) |
 | `Badge` | default / stamp / outline |
 | `RecipeCard`, `MediaCard` | Content cards |
 | `Divider` | Section divider |

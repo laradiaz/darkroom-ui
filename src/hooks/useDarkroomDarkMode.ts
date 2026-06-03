@@ -48,5 +48,5 @@ export function useDarkroomDarkMode(defaultTheme: DarkroomTheme = "system") {
     setTheme(resolved === "dark" ? "light" : "dark");
   }, [resolved, setTheme]);
 
-  return { theme, resolved, setTheme, toggle, isDark: resolved === "dark" };
+  return { theme, resolved, setTheme, toggle, darkModeEnabled: resolved === "dark" };
 }

@@ -1,6 +1,6 @@
 {
   "name": "darkroom-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Monochrome editorial React component library with CSS-variable light/dark theming",
   "type": "module",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/laradiaz/darkroom-ui.git"
   },
   "sideEffects": ["**/*.css"],
-  "files": ["lib"],
+  "files": ["lib", "README.md", "LICENSE"],
   "main": "./lib/darkroom-ui.cjs",
   "module": "./lib/darkroom-ui.mjs",
   "types": "./lib/darkroom-ui.d.ts",

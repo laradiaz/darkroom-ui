@@ -2,10 +2,10 @@ import {
   useId,
   useState,
   type AnchorHTMLAttributes,
-  type ButtonHTMLAttributes,
   type HTMLAttributes,
   type ReactNode,
 } from "react";
+import { NavMenuButton, type NavMenuButtonProps } from "../Button";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
@@ -20,7 +20,7 @@ export type NavItem = {
 export type NavBarSlotProps = {
   root?: HTMLAttributes<HTMLElement>;
   logo?: HTMLAttributes<HTMLDivElement>;
-  menuButton?: ButtonHTMLAttributes<HTMLButtonElement>;
+  menuButton?: NavMenuButtonProps;
   nav?: HTMLAttributes<HTMLElement>;
   list?: HTMLAttributes<HTMLUListElement>;
   link?: AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -70,26 +70,14 @@ export function NavBar({
           {logo}
         </div>
       ) : null}
-      <button
-        type="button"
+      <NavMenuButton
+        unstyled={isUnstyled}
         aria-expanded={open}
         aria-controls={navId}
         onClick={() => setOpen((v) => !v)}
         {...menuButtonSlot.rest}
-        className={labClassName(
-          isUnstyled,
-          styles.menuButton,
-          undefined,
-          menuButtonSlot.className,
-        )}
-      >
-        <span className={isUnstyled ? undefined : styles.menuIcon} aria-hidden>
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className={isUnstyled ? undefined : styles.visuallyHidden}>Toggle menu</span>
-      </button>
+        className={menuButtonSlot.className}
+      />
       <nav
         id={navId}
         aria-label="Main navigation"
