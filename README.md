@@ -2,7 +2,8 @@
 
 Monochrome editorial React component library — warm paper and charcoal tones, CSS-variable light/dark mode, no accent palette.
 
-**Repository:** [github.com/laradiaz/darkroom-ui](https://github.com/laradiaz/darkroom-ui) (private)
+**Repository:** [github.com/laradiaz/darkroom-ui](https://github.com/laradiaz/darkroom-ui)  
+**npm:** [darkroom-ui](https://www.npmjs.com/package/darkroom-ui)
 
 ## Install
 
@@ -10,13 +11,15 @@ Monochrome editorial React component library — warm paper and charcoal tones, 
 npm install darkroom-ui
 # or
 pnpm add darkroom-ui
-# or from GitHub (private)
+```
+
+Install a specific version from Git (without npm):
+
+```bash
 pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.0
 ```
 
 **Peer dependencies:** `react` and `react-dom` (v18+).
-
-Before publishing to npm, verify the name: `npm view darkroom-ui`.
 
 ## Usage
 
@@ -142,6 +145,8 @@ pnpm run storybook
 
 ## Publish
 
+Maintainers only:
+
 ```bash
 npm login
 pnpm run build
@@ -149,7 +154,7 @@ pnpm run check-publish
 npm publish --access public
 ```
 
-Or `./scripts/release.sh patch`.
+For version bumps after the initial release: `./scripts/release.sh patch` (or `minor` / `major`).
 
 ## License
 
