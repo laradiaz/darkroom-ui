@@ -1,5 +1,7 @@
 export * from "./Typography";
 export * from "./Button";
+export * from "./Select";
+export * from "./FileDropzone";
 export * from "./Badge";
 export * from "./Card";
 export * from "./Divider";

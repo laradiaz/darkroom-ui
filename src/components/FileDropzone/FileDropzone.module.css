@@ -1,0 +1,48 @@
+@reference "../../theme/index.css";
+
+.root {
+  @apply relative flex min-h-64 cursor-pointer flex-col items-center justify-center gap-4;
+  @apply rounded-sm border border-dashed border-border bg-paper-dark/60 px-6 py-12 text-center;
+  @apply transition-colors duration-200;
+  @apply hover:border-text-muted;
+}
+
+.dragging {
+  @apply border-foreground bg-paper-dark;
+}
+
+.disabled {
+  @apply cursor-not-allowed opacity-50 hover:border-border;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.icon {
+  @apply h-10 w-10 text-text-muted;
+}
+
+.label {
+  @apply font-sans text-sm font-medium text-foreground;
+}
+
+.hint {
+  @apply mt-1 font-sans text-xs text-text-muted;
+}
+
+.formats {
+  @apply flex flex-wrap justify-center gap-2;
+}
+
+.format {
+  @apply rounded-full border border-border px-3 py-1 font-sans text-xs text-text-muted;
+}

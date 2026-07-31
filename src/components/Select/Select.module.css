@@ -1,0 +1,45 @@
+@reference "../../theme/index.css";
+
+.root {
+  @apply relative w-full;
+}
+
+.trigger {
+  @apply flex w-full items-center justify-between gap-3 font-sans text-sm text-left;
+  @apply px-3 py-2 rounded-sm bg-paper border border-border text-foreground;
+  @apply transition-colors duration-200 cursor-pointer;
+  @apply hover:bg-paper-dark;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.placeholder {
+  @apply text-text-muted;
+}
+
+.chevron {
+  @apply h-4 w-4 shrink-0 text-text-muted transition-transform duration-200;
+}
+
+.chevronOpen {
+  @apply rotate-180;
+}
+
+.list {
+  @apply absolute z-20 mt-1 w-full overflow-hidden rounded-sm border border-border bg-paper py-1;
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.option {
+  @apply flex w-full items-center justify-between px-3 py-2 text-left text-sm text-foreground;
+  @apply transition-colors duration-150 cursor-pointer;
+  @apply hover:bg-paper-dark;
+}
+
+.optionSelected {
+  @apply bg-paper-dark;
+}
+
+.check {
+  @apply text-text-muted;
+}

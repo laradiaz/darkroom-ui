@@ -34,6 +34,16 @@
       "import": "./lib/button.mjs",
       "require": "./lib/button.cjs"
     },
+    "./select": {
+      "types": "./lib/select.d.ts",
+      "import": "./lib/select.mjs",
+      "require": "./lib/select.cjs"
+    },
+    "./file-dropzone": {
+      "types": "./lib/file-dropzone.d.ts",
+      "import": "./lib/file-dropzone.mjs",
+      "require": "./lib/file-dropzone.cjs"
+    },
     "./badge": {
       "types": "./lib/badge.d.ts",
       "import": "./lib/badge.mjs",

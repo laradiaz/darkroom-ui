@@ -121,6 +121,8 @@ Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorag
 |-----------|-------------|
 | `Heading`, `Text`, `Label` | Typography |
 | `Button` | primary / ghost / link |
+| `Select` | Custom listbox select |
+| `FileDropzone` | Drag-and-drop / click file picker |
 | `NavMenuButton` | Mobile nav menu toggle (hamburger) |
 | `Badge` | default / stamp / outline |
 | `RecipeCard`, `MediaCard` | Content cards |

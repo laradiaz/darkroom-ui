@@ -10,6 +10,8 @@ const libEntries = {
   style: resolve(__dirname, "src/entries/style.ts"),
   core: resolve(__dirname, "src/core.ts"),
   button: resolve(__dirname, "src/entries/button.ts"),
+  select: resolve(__dirname, "src/entries/select.ts"),
+  "file-dropzone": resolve(__dirname, "src/entries/file-dropzone.ts"),
   badge: resolve(__dirname, "src/entries/badge.ts"),
   typography: resolve(__dirname, "src/entries/typography.ts"),
   layout: resolve(__dirname, "src/entries/layout.ts"),
