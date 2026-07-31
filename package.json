@@ -94,9 +94,11 @@
     "build": "tsc --noEmit && vite build && cp src/theme/tokens.css lib/tokens.css && node scripts/build-fonts.mjs",
     "storybook": "STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "STORYBOOK=true storybook build",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "check-publish": "bash scripts/check-publish.sh",
     "check-publish:full": "DARKROOM_UI_CHECK_STORYBOOK=1 bash scripts/check-publish.sh",
-    "prepublishOnly": "pnpm run build && pnpm run check-publish"
+    "prepublishOnly": "pnpm run build && pnpm run check-publish && pnpm test"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -110,9 +112,13 @@
     "@storybook/react": "^8.6.14",
     "@storybook/react-vite": "^8.6.14",
     "@tailwindcss/postcss": "^4.1.8",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
     "@vitejs/plugin-react": "^4.4.1",
+    "jsdom": "^30.0.1",
     "postcss": "^8.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -120,7 +126,8 @@
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vite-plugin-dts": "^4.5.3"
+    "vite-plugin-dts": "^4.5.3",
+    "vitest": "^4.1.10"
   },
   "publishConfig": {
     "access": "public"

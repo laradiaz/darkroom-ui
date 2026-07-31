@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -34,7 +35,12 @@ export default defineConfig({
       : [
           dts({
             include: ["src/**/*.ts", "src/**/*.tsx"],
-            exclude: ["src/**/*.stories.tsx", "src/stories/**"],
+            exclude: [
+              "src/**/*.stories.tsx",
+              "src/**/*.{test,spec}.{ts,tsx}",
+              "src/stories/**",
+              "src/test/**",
+            ],
             outDir: "lib",
             entryRoot: "src",
             rollupTypes: true,
@@ -67,5 +73,10 @@ export default defineConfig({
       localsConvention: "camelCaseOnly",
       generateScopedName: "_[name]_[local]_[hash:base64:5]",
     },
+  },
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
+    css: true,
   },
 });
