@@ -1,5 +1,6 @@
 @reference "../../theme/index.css";
-.recipeCard {
+
+.postCard {
   @apply block no-underline text-inherit rounded-sm;
   @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground;
 }
@@ -9,7 +10,7 @@
   box-shadow: 0 4px 24px var(--color-shadow-soft);
 }
 
-.recipeCard:hover .imageWrap {
+.postCard:hover .imageWrap {
   box-shadow: 0 8px 32px var(--color-shadow-hover);
 }
 
@@ -17,7 +18,7 @@
   @apply w-full aspect-[4/3] object-cover transition-transform duration-500;
 }
 
-.recipeCard:hover .image {
+.postCard:hover .image {
   @apply scale-105;
 }
 
@@ -31,19 +32,4 @@
 
 .subtitle {
   @apply font-sans text-sm text-text-muted m-0;
-}
-
-.mediaCard {
-  @apply relative overflow-hidden rounded-sm;
-  box-shadow: 0 4px 24px var(--color-shadow-soft);
-}
-
-.mediaImage {
-  @apply w-full aspect-[16/9] object-cover;
-}
-
-.mediaOverlay {
-  @apply absolute inset-0 flex flex-col justify-end p-6;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%);
-  @apply text-paper;
 }

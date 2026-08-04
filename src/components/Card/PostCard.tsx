@@ -5,7 +5,7 @@ import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
 import styles from "./Card.module.css";
 
-export type RecipeCardSlotProps = {
+export type PostCardSlotProps = {
   root?: AnchorHTMLAttributes<HTMLAnchorElement>;
   imageWrap?: HTMLAttributes<HTMLDivElement>;
   image?: ImgHTMLAttributes<HTMLImageElement>;
@@ -14,7 +14,7 @@ export type RecipeCardSlotProps = {
   subtitle?: HTMLAttributes<HTMLParagraphElement>;
 };
 
-export type RecipeCardProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
+export type PostCardProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   image: string;
   imageAlt?: string;
   category: string;
@@ -22,10 +22,10 @@ export type RecipeCardProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "hre
   subtitle?: string;
   href: string;
   unstyled?: boolean;
-  slotProps?: RecipeCardSlotProps;
+  slotProps?: PostCardSlotProps;
 };
 
-export function RecipeCard({
+export function PostCard({
   image,
   imageAlt = "",
   category,
@@ -36,7 +36,7 @@ export function RecipeCard({
   slotProps,
   className,
   ...rest
-}: RecipeCardProps) {
+}: PostCardProps) {
   const isUnstyled = useDarkroomUnstyled(unstyled);
   const rootSlot = splitSlotClassName(slotProps?.root);
   const imageWrapSlot = splitSlotClassName(slotProps?.imageWrap);
@@ -50,7 +50,7 @@ export function RecipeCard({
       href={href}
       {...rest}
       {...rootSlot.rest}
-      className={labClassName(isUnstyled, styles.recipeCard, className, rootSlot.className)}
+      className={labClassName(isUnstyled, styles.postCard, className, rootSlot.className)}
     >
       <div
         {...imageWrapSlot.rest}

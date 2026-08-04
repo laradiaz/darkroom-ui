@@ -1,6 +1,6 @@
 @reference "../../theme/index.css";
 
-.figure {
+.media {
   @apply m-0 w-full max-w-3xl;
 }
 
@@ -10,27 +10,27 @@
 }
 
 .image {
-  @apply block w-full object-cover;
+  @apply absolute inset-0 block w-full h-full object-cover;
 }
 
-.square .image {
+.square .imageWrap {
   aspect-ratio: 1 / 1;
 }
 
-.video .image {
+.video .imageWrap {
   aspect-ratio: 16 / 9;
 }
 
-.portrait .image {
+.portrait .imageWrap {
   aspect-ratio: 3 / 4;
 }
 
-.wide .image {
+.wide .imageWrap {
   aspect-ratio: 21 / 9;
 }
 
 .overlay {
-  @apply absolute inset-0 flex items-end p-4 pointer-events-none;
+  @apply absolute inset-0 flex items-end p-4 pointer-events-none text-on-media;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
 }
 

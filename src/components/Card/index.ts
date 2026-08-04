@@ -1,2 +1,1 @@
-export { RecipeCard, type RecipeCardProps } from "./RecipeCard";
-export { MediaCard, type MediaCardProps } from "./MediaCard";
+export { PostCard, type PostCardProps } from "./PostCard";

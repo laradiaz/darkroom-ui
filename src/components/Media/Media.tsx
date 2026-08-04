@@ -1,13 +1,18 @@
-import { useId, type HTMLAttributes, type ImgHTMLAttributes } from "react";
+import {
+  useId,
+  type HTMLAttributes,
+  type ImgHTMLAttributes,
+  type ReactNode,
+} from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
-import styles from "./Figure.module.css";
+import styles from "./Media.module.css";
 
-export type FigureAspect = "square" | "video" | "portrait" | "wide";
+export type MediaAspect = "square" | "video" | "portrait" | "wide";
 
-export type FigureSlotProps = {
+export type MediaSlotProps = {
   root?: HTMLAttributes<HTMLElement>;
   imageWrap?: HTMLAttributes<HTMLDivElement>;
   image?: ImgHTMLAttributes<HTMLImageElement>;
@@ -15,17 +20,17 @@ export type FigureSlotProps = {
   caption?: HTMLAttributes<HTMLElement>;
 };
 
-export type FigureProps = HTMLAttributes<HTMLElement> & {
+export type MediaProps = HTMLAttributes<HTMLElement> & {
   src: string;
   alt: string;
   caption?: string;
-  aspect?: FigureAspect;
-  overlay?: React.ReactNode;
+  aspect?: MediaAspect;
+  overlay?: ReactNode;
   unstyled?: boolean;
-  slotProps?: FigureSlotProps;
+  slotProps?: MediaSlotProps;
 };
 
-export function Figure({
+export function Media({
   src,
   alt,
   caption,
@@ -35,7 +40,7 @@ export function Figure({
   slotProps,
   className,
   ...rest
-}: FigureProps) {
+}: MediaProps) {
   const isUnstyled = useDarkroomUnstyled(unstyled);
   const captionId = useId();
   const rootSlot = splitSlotClassName(slotProps?.root);
@@ -50,7 +55,7 @@ export function Figure({
       {...rootSlot.rest}
       className={labClassName(
         isUnstyled,
-        cn(styles.figure, styles[aspect]),
+        cn(styles.media, styles[aspect]),
         className,
         rootSlot.className,
       )}

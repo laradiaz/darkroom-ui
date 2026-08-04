@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { formatStoryName } from "../../stories/formatStoryName";
-import { RecipeCard } from "../Card";
+import { PostCard } from "../Card";
 import { ContentGrid } from "./ContentGrid";
 
 const meta: Meta<typeof ContentGrid> = {
-  title: "Components/ContentGrid",
+  title: "Layout/ContentGrid",
   component: ContentGrid,
   tags: ["autodocs"],
 };
@@ -47,10 +47,10 @@ export const ThreeColumns: Story = {
 export const FourColumnsWithCards: Story = {
   render: () => (
     <ContentGrid columns={4}>
-      <RecipeCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
-      <RecipeCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
-      <RecipeCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
-      <RecipeCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
+      <PostCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
+      <PostCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
+      <PostCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
+      <PostCard href="#" image={sampleImage} category={fourCol} title={fourCol} />
     </ContentGrid>
   ),
 };
