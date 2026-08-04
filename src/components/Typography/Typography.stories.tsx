@@ -3,7 +3,7 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { Heading, Label, Text } from "./index";
 
 const meta: Meta = {
-  title: "Components/Typography",
+  title: "Content/Typography",
   tags: ["autodocs"],
 };
 

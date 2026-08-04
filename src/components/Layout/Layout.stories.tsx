@@ -4,7 +4,7 @@ import { Text } from "../Typography";
 import { Container, Page, Section } from "./index";
 
 const meta: Meta = {
-  title: "Components/Layout",
+  title: "Layout/Page",
   tags: ["autodocs"],
 };
 

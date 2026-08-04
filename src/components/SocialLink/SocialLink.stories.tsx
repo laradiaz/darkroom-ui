@@ -4,7 +4,7 @@ import type { SocialPlatform } from "./icons";
 import { SocialLink } from "./SocialLink";
 
 const meta: Meta<typeof SocialLink> = {
-  title: "Components/SocialLink",
+  title: "Layout/SocialLink",
   component: SocialLink,
   tags: ["autodocs"],
   argTypes: {

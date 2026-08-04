@@ -6,7 +6,7 @@ import { Heading, Text } from "../Typography";
 import { Hero } from "./Hero";
 
 const meta: Meta<typeof Hero> = {
-  title: "Components/Hero",
+  title: "Layout/Hero",
   component: Hero,
   parameters: {
     layout: "fullscreen",

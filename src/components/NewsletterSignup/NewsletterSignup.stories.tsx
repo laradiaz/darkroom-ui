@@ -3,7 +3,7 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { NewsletterSignup } from "./NewsletterSignup";
 
 const meta: Meta<typeof NewsletterSignup> = {
-  title: "Components/NewsletterSignup",
+  title: "Form/NewsletterSignup",
   component: NewsletterSignup,
   tags: ["autodocs"],
 };

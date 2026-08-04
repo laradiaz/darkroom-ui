@@ -3,7 +3,7 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { Badge } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
-  title: "Components/Badge",
+  title: "Content/Badge",
   component: Badge,
   tags: ["autodocs"],
   argTypes: {

@@ -39,7 +39,7 @@ import "darkroom-ui/fonts.css";
 import {
   Button,
   Heading,
-  RecipeCard,
+  PostCard,
   NavBar,
   Hero,
   Footer,
@@ -117,24 +117,37 @@ Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorag
 
 ## Components
 
+### Form
 | Component | Description |
 |-----------|-------------|
-| `Heading`, `Text`, `Label` | Typography |
-| `Button` | primary / ghost / link |
-| `Select` | Custom listbox select |
 | `FileDropzone` | Drag-and-drop / click file picker |
-| `NavMenuButton` | Mobile nav menu toggle (hamburger) |
-| `Badge` | default / stamp / outline |
-| `RecipeCard`, `MediaCard` | Content cards |
-| `Divider` | Section divider |
-| `ContentGrid` | Responsive grid |
-| `NavBar` | Navigation |
-| `Hero` | Image/video hero |
 | `NewsletterSignup` | Email form |
-| `SocialLink` | Icon or text social link |
-| `Figure` | Image with caption |
+| `Select` | Custom listbox select |
+
+### Button
+| Component | Description |
+|-----------|-------------|
+| `Button` | primary / ghost / link |
+| `NavMenuButton` | Mobile nav menu toggle (hamburger) |
+
+### Content
+| Component | Description |
+|-----------|-------------|
+| `Badge` | default / stamp / outline |
+| `Divider` | Section divider |
+| `Heading`, `Text`, `Label` | Typography |
+| `Media` | Image with caption / overlay |
+| `PostCard` | Linked content teaser |
+
+### Layout
+| Component | Description |
+|-----------|-------------|
+| `ContentGrid` | Responsive grid |
 | `Footer` | Site footer |
-| `Page`, `Container`, `Section` | Layout |
+| `Hero` | Image/video hero |
+| `NavBar` | Navigation |
+| `Page`, `Container`, `Section` | Page shell |
+| `SocialLink` | Icon or text social link |
 
 ## Development
 

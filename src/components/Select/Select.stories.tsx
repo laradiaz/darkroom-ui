@@ -10,7 +10,7 @@ const currencyOptions: SelectOption[] = [
 ];
 
 const meta: Meta<typeof Select> = {
-  title: "Components/Select",
+  title: "Form/Select",
   component: Select,
   tags: ["autodocs"],
 };

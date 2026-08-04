@@ -3,7 +3,7 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { Divider } from "./Divider";
 
 const meta: Meta<typeof Divider> = {
-  title: "Components/Divider",
+  title: "Content/Divider",
   component: Divider,
   tags: ["autodocs"],
 };

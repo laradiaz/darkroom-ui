@@ -6,7 +6,7 @@ import { SocialLink } from "../SocialLink";
 import { Footer } from "./Footer";
 
 const meta: Meta<typeof Footer> = {
-  title: "Components/Footer",
+  title: "Layout/Footer",
   component: Footer,
   tags: ["autodocs"],
   parameters: {

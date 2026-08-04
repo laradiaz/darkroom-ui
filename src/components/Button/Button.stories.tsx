@@ -3,7 +3,7 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: "Button/Button",
   component: Button,
   tags: ["autodocs"],
 };
