@@ -8,13 +8,20 @@
   @apply shrink-0 font-display text-xl text-foreground;
 }
 
-.nav {
-  @apply hidden md:flex items-center gap-8 flex-1 justify-end;
+.menuButton {
+  @apply md:hidden;
 }
 
+/* Closed on small screens; always shown from md up. */
+.nav {
+  @apply hidden;
+  @apply md:flex md:static md:flex-row md:items-center md:justify-end md:gap-8 md:flex-1 md:border-0 md:bg-transparent md:p-0;
+}
+
+/* Open mobile panel — separate class so it doesn't fight `hidden`. */
 .navOpen {
-  @apply flex flex-col absolute top-full left-0 right-0 bg-paper border-b border-border p-6 gap-6 z-50;
-  @apply md:static md:flex md:flex-row md:border-0 md:p-0 md:bg-transparent;
+  @apply flex flex-col absolute top-full left-0 right-0 z-50 gap-6 border-b border-border bg-paper p-6;
+  @apply md:static md:flex-row md:items-center md:justify-end md:gap-8 md:flex-1 md:border-0 md:bg-transparent md:p-0;
 }
 
 .list {

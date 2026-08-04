@@ -25,7 +25,14 @@ describe("NavBar", () => {
 
     const menu = screen.getByRole("button", { name: "Toggle menu" });
     expect(menu).toHaveAttribute("aria-expanded", "false");
+    expect(nav?.className.includes("navOpen")).toBe(false);
+
     await user.click(menu);
     expect(menu).toHaveAttribute("aria-expanded", "true");
+    expect(nav?.className.includes("navOpen")).toBe(true);
+
+    await user.click(menu);
+    expect(menu).toHaveAttribute("aria-expanded", "false");
+    expect(nav?.className.includes("navOpen")).toBe(false);
   });
 });

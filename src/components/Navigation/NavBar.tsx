@@ -6,7 +6,6 @@ import {
   type ReactNode,
 } from "react";
 import { NavMenuButton, type NavMenuButtonProps } from "../Button";
-import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
@@ -50,7 +49,10 @@ export function NavBar({
 
   const rootSlot = splitSlotClassName(slotProps?.root);
   const logoSlot = splitSlotClassName(slotProps?.logo);
-  const menuButtonSlot = splitSlotClassName(slotProps?.menuButton);
+  const {
+    className: menuButtonClassName,
+    rest: { onClick: onMenuButtonClick, ...menuButtonRest },
+  } = splitSlotClassName(slotProps?.menuButton);
   const navSlot = splitSlotClassName(slotProps?.nav);
   const listSlot = splitSlotClassName(slotProps?.list);
   const linkSlot = splitSlotClassName(slotProps?.link);
@@ -74,9 +76,12 @@ export function NavBar({
         unstyled={isUnstyled}
         aria-expanded={open}
         aria-controls={navId}
-        onClick={() => setOpen((v) => !v)}
-        {...menuButtonSlot.rest}
-        className={menuButtonSlot.className}
+        {...menuButtonRest}
+        className={labClassName(isUnstyled, styles.menuButton, menuButtonClassName)}
+        onClick={(event) => {
+          setOpen((value) => !value);
+          onMenuButtonClick?.(event);
+        }}
       />
       <nav
         id={navId}
@@ -84,7 +89,7 @@ export function NavBar({
         {...navSlot.rest}
         className={labClassName(
           isUnstyled,
-          cn(styles.nav, open && styles.navOpen),
+          open ? styles.navOpen : styles.nav,
           undefined,
           navSlot.className,
         )}
