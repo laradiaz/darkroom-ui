@@ -1,28 +1,68 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { FileDropzone } from "./FileDropzone";
+import { FileDropzone, formatAcceptChip } from "./FileDropzone";
 
 afterEach(cleanup);
 
+describe("formatAcceptChip", () => {
+  it("strips a leading dot and uppercases", () => {
+    expect(formatAcceptChip(".pdf")).toBe("PDF");
+    expect(formatAcceptChip("image/*")).toBe("IMAGE/*");
+  });
+});
+
 describe("FileDropzone", () => {
-  it("calls onFile from input change", async () => {
+  it("calls onFiles from input change", async () => {
     const user = userEvent.setup();
-    const onFile = vi.fn();
-    const { container } = render(<FileDropzone onFile={onFile} label="Upload" />);
+    const onFiles = vi.fn();
+    const { container } = render(<FileDropzone onFiles={onFiles} label="Upload" />);
 
     const input = container.querySelector('input[type="file"]') as HTMLInputElement;
     const file = new File(["hello"], "note.txt", { type: "text/plain" });
     await user.upload(input, file);
 
-    expect(onFile).toHaveBeenCalledTimes(1);
-    expect(onFile.mock.calls[0][0].name).toBe("note.txt");
+    expect(onFiles).toHaveBeenCalledTimes(1);
+    expect(onFiles.mock.calls[0][0]).toHaveLength(1);
+    expect(onFiles.mock.calls[0][0][0].name).toBe("note.txt");
   });
 
-  it("calls onFile from drop", () => {
-    const onFile = vi.fn();
+  it("wires acceptedFormats to input accept and chips", () => {
     const { container } = render(
-      <FileDropzone onFile={onFile} label="Drop here" aria-label="File dropzone" />,
+      <FileDropzone
+        onFiles={() => undefined}
+        acceptedFormats={[".csv", ".pdf"]}
+        label="Upload"
+      />,
+    );
+
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    expect(input.accept).toBe(".csv,.pdf");
+    expect(screen.getByText("CSV")).toBeInTheDocument();
+    expect(screen.getByText("PDF")).toBeInTheDocument();
+  });
+
+  it("calls onFiles with all files when multiple", async () => {
+    const user = userEvent.setup();
+    const onFiles = vi.fn();
+    const { container } = render(
+      <FileDropzone onFiles={onFiles} multiple label="Upload many" />,
+    );
+
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    await user.upload(input, [
+      new File(["a"], "a.txt", { type: "text/plain" }),
+      new File(["b"], "b.txt", { type: "text/plain" }),
+    ]);
+
+    expect(onFiles).toHaveBeenCalledTimes(1);
+    expect(onFiles.mock.calls[0][0].map((f: File) => f.name)).toEqual(["a.txt", "b.txt"]);
+  });
+
+  it("calls onFiles from drop", () => {
+    const onFiles = vi.fn();
+    const { container } = render(
+      <FileDropzone onFiles={onFiles} label="Drop here" aria-label="File dropzone" />,
     );
 
     const dropzone = container.querySelector("label") as HTMLLabelElement;
@@ -31,16 +71,16 @@ describe("FileDropzone", () => {
       dataTransfer: { files: [file] },
     });
 
-    expect(onFile).toHaveBeenCalledTimes(1);
-    expect(onFile.mock.calls[0][0].name).toBe("drop.csv");
+    expect(onFiles).toHaveBeenCalledTimes(1);
+    expect(onFiles.mock.calls[0][0][0].name).toBe("drop.csv");
   });
 
-  it("does not call onFile when disabled or loading", async () => {
+  it("does not call onFiles when disabled or loading", async () => {
     const user = userEvent.setup();
-    const onFile = vi.fn();
+    const onFiles = vi.fn();
 
     const disabled = render(
-      <FileDropzone onFile={onFile} disabled label="Browse" aria-label="Disabled zone" />,
+      <FileDropzone onFiles={onFiles} disabled label="Browse" aria-label="Disabled zone" />,
     );
     const disabledInput = disabled.container.querySelector(
       'input[type="file"]',
@@ -52,7 +92,7 @@ describe("FileDropzone", () => {
     disabled.unmount();
 
     const loading = render(
-      <FileDropzone onFile={onFile} loading label="Browse" aria-label="Loading zone" />,
+      <FileDropzone onFiles={onFiles} loading label="Browse" aria-label="Loading zone" />,
     );
     const loadingInput = loading.container.querySelector(
       'input[type="file"]',
@@ -64,6 +104,6 @@ describe("FileDropzone", () => {
     });
     await user.upload(loadingInput, new File(["x"], "c.txt"));
 
-    expect(onFile).not.toHaveBeenCalled();
+    expect(onFiles).not.toHaveBeenCalled();
   });
 });

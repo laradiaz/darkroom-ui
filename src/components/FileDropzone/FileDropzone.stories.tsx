@@ -4,34 +4,47 @@ import { formatStoryName } from "../../stories/formatStoryName";
 import { FileDropzone } from "./FileDropzone";
 
 const meta: Meta<typeof FileDropzone> = {
-  title: "Components/FileDropzone",
+  title: "Form/FileDropzone",
   component: FileDropzone,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Drag-and-drop or click file picker. `acceptedFormats` sets the input filter and the chips. `onFiles` receives every selected file when `multiple` is set.",
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof FileDropzone>;
 
 function Demo(props: Partial<ComponentProps<typeof FileDropzone>>) {
-  const [name, setName] = useState<string | null>(null);
+  const [names, setNames] = useState<string[]>([]);
   return (
     <div className="max-w-xl space-y-3">
       <FileDropzone
         aria-label={formatStoryName("Demo")}
-        accept=".csv,.xlsx,.xls,.pdf"
-        formats={["CSV", "XLSX", "PDF"]}
+        acceptedFormats={[".csv", ".xlsx", ".xls", ".pdf"]}
         label="Drop a file here or click to browse"
         hint="Max 10 MB"
-        onFile={(file) => setName(file.name)}
+        onFiles={(files) => setNames(files.map((file) => file.name))}
         {...props}
       />
-      {name ? <p className="text-sm text-text-muted">Selected: {name}</p> : null}
+      {names.length > 0 ? (
+        <p className="text-sm text-text-muted">Selected: {names.join(", ")}</p>
+      ) : null}
     </div>
   );
 }
 
 export const Default: Story = {
   render: () => <Demo />,
+};
+
+export const Multiple: Story = {
+  render: () => <Demo multiple label="Drop files here or click to browse" />,
 };
 
 export const Loading: Story = {

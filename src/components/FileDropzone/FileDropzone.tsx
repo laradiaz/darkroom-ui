@@ -18,14 +18,14 @@ export type FileDropzoneSlotProps = {
   icon?: HTMLAttributes<SVGSVGElement>;
   label?: HTMLAttributes<HTMLParagraphElement>;
   hint?: HTMLAttributes<HTMLParagraphElement>;
-  formats?: HTMLAttributes<HTMLDivElement>;
+  acceptedFormats?: HTMLAttributes<HTMLDivElement>;
 };
 
 export type FileDropzoneProps = {
-  /** Called with the selected/dropped file (first file if multiple). */
-  onFile: (file: File) => void;
-  accept?: string;
-  formats?: string[];
+  /** Selected / dropped files (one item unless `multiple`). */
+  onFiles: (files: File[]) => void;
+  /** Allowed types for the input and display chips (e.g. `.pdf`, `image/*`). */
+  acceptedFormats?: string[];
   label?: string;
   loadingLabel?: string;
   hint?: string;
@@ -36,10 +36,15 @@ export type FileDropzoneProps = {
   unstyled?: boolean;
   className?: string;
   "aria-label"?: string;
-  /** Replace the default icon + label + formats content */
+  /** Replace the default icon + label + format chips content */
   children?: ReactNode;
   slotProps?: FileDropzoneSlotProps;
 };
+
+/** Chip label from an accept token: `.pdf` → `PDF`, `image/*` → `IMAGE/*`. */
+export function formatAcceptChip(token: string): string {
+  return token.replace(/^\./, "").toUpperCase();
+}
 
 function UploadIcon({ className, ...rest }: HTMLAttributes<SVGSVGElement>) {
   return (
@@ -62,9 +67,8 @@ function UploadIcon({ className, ...rest }: HTMLAttributes<SVGSVGElement>) {
 }
 
 export function FileDropzone({
-  onFile,
-  accept,
-  formats = [],
+  onFiles,
+  acceptedFormats = [],
   label = "Drop a file here or click to browse",
   loadingLabel = "Processing file…",
   hint,
@@ -86,15 +90,16 @@ export function FileDropzone({
   const iconSlot = splitSlotClassName(slotProps?.icon);
   const labelSlot = splitSlotClassName(slotProps?.label);
   const hintSlot = splitSlotClassName(slotProps?.hint);
-  const formatsSlot = splitSlotClassName(slotProps?.formats);
+  const formatsSlot = splitSlotClassName(slotProps?.acceptedFormats);
 
-  const takeFile = (fileList: FileList | null) => {
-    const file = fileList?.[0];
-    if (file) onFile(file);
+  const takeFiles = (fileList: FileList | null) => {
+    if (!fileList?.length) return;
+    const files = Array.from(fileList);
+    onFiles(multiple ? files : files.slice(0, 1));
   };
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    takeFile(event.target.files);
+    takeFiles(event.target.files);
     event.target.value = "";
   };
 
@@ -102,7 +107,7 @@ export function FileDropzone({
     event.preventDefault();
     setDragging(false);
     if (isDisabled) return;
-    takeFile(event.dataTransfer.files);
+    takeFiles(event.dataTransfer.files);
   };
 
   return (
@@ -125,7 +130,7 @@ export function FileDropzone({
     >
       <input
         type="file"
-        accept={accept}
+        accept={acceptedFormats.length > 0 ? acceptedFormats.join(",") : undefined}
         multiple={multiple}
         disabled={isDisabled}
         onChange={onInputChange}
@@ -155,14 +160,19 @@ export function FileDropzone({
               </p>
             ) : null}
           </div>
-          {formats.length > 0 ? (
+          {acceptedFormats.length > 0 ? (
             <div
               {...formatsSlot.rest}
-              className={labClassName(isUnstyled, styles.formats, undefined, formatsSlot.className)}
+              className={labClassName(
+                isUnstyled,
+                styles.acceptedFormats,
+                undefined,
+                formatsSlot.className,
+              )}
             >
-              {formats.map((format) => (
-                <span key={format} className={labClassName(isUnstyled, styles.format)}>
-                  {format}
+              {acceptedFormats.map((format) => (
+                <span key={format} className={labClassName(isUnstyled, styles.acceptedFormat)}>
+                  {formatAcceptChip(format)}
                 </span>
               ))}
             </div>
