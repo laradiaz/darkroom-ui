@@ -4,6 +4,8 @@
   --color-text: #2d2a26;
   --color-text-muted: #5c5651;
   --color-border: #d4cfc7;
+  /* Always light — text/icons on photo overlays (Hero, MediaCard). Does not flip in dark. */
+  --color-on-media: #faf9f7;
   --color-grid-dot: rgba(45, 42, 38, 0.03);
   --color-body-gradient-end: #f5f3ef;
   --color-shadow: rgba(45, 42, 38, 0.08);
@@ -20,6 +22,7 @@ html.dark {
   --color-text: #f5f3ef;
   --color-text-muted: #9c958c;
   --color-border: #3f3a36;
+  --color-on-media: #faf9f7;
   --color-grid-dot: rgba(255, 255, 255, 0.04);
   --color-body-gradient-end: #141210;
   --color-shadow: rgba(0, 0, 0, 0.35);

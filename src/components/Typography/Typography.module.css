@@ -4,7 +4,7 @@
 }
 
 .headingInverse {
-  @apply font-display text-paper font-normal leading-tight;
+  @apply font-display text-on-media font-normal leading-tight;
 }
 
 .h1 {
@@ -48,19 +48,19 @@
 }
 
 .textInverse {
-  @apply font-sans text-paper;
+  @apply font-sans text-on-media;
 }
 
 .subtitleInverse {
-  @apply text-lg text-paper/90 leading-relaxed;
+  @apply text-lg text-on-media/90 leading-relaxed;
 }
 
 .bodyInverse {
-  @apply text-base text-paper leading-relaxed;
+  @apply text-base text-on-media leading-relaxed;
 }
 
 .captionInverse {
-  @apply text-sm text-paper/80 leading-normal;
+  @apply text-sm text-on-media/80 leading-normal;
 }
 
 .label {
