@@ -1,4 +1,12 @@
-import { useEffect, useId, useRef, useState, type ButtonHTMLAttributes, type HTMLAttributes } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type ButtonHTMLAttributes,
+  type HTMLAttributes,
+  type KeyboardEvent,
+} from "react";
 import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
@@ -30,6 +38,11 @@ export type SelectProps = {
   slotProps?: SelectSlotProps;
 };
 
+function clampIndex(index: number, length: number) {
+  if (length <= 0) return 0;
+  return Math.max(0, Math.min(index, length - 1));
+}
+
 export function Select({
   value,
   options,
@@ -43,32 +56,89 @@ export function Select({
 }: SelectProps) {
   const isUnstyled = useDarkroomUnstyled(unstyled);
   const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const listId = useId();
   const selected = options.find((option) => option.value === value);
+  const selectedIndex = Math.max(
+    0,
+    options.findIndex((option) => option.value === value),
+  );
   const label = selected?.label ?? (placeholder && !value ? placeholder : options[0]?.label ?? value);
   const isPlaceholder = Boolean(placeholder && !value && !selected);
+  const activeOptionId = open && options[activeIndex] ? `${listId}-opt-${activeIndex}` : undefined;
 
   const rootSlot = splitSlotClassName(slotProps?.root);
   const triggerSlot = splitSlotClassName(slotProps?.trigger);
   const listSlot = splitSlotClassName(slotProps?.list);
   const optionSlot = splitSlotClassName(slotProps?.option);
 
+  const openList = (index = selectedIndex) => {
+    setActiveIndex(clampIndex(index, options.length));
+    setOpen(true);
+  };
+
+  const closeList = () => {
+    setOpen(false);
+    triggerRef.current?.focus();
+  };
+
+  const selectIndex = (index: number) => {
+    const option = options[index];
+    if (!option) return;
+    onChange(option.value);
+    closeList();
+  };
+
   useEffect(() => {
     if (!open) return;
     const onPointerDown = (event: MouseEvent) => {
       if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
     };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
-    };
     document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
+    return () => document.removeEventListener("mousedown", onPointerDown);
   }, [open]);
+
+  const onTriggerKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    if (disabled) return;
+
+    switch (event.key) {
+      case "ArrowDown":
+        event.preventDefault();
+        if (!open) openList(selectedIndex);
+        else setActiveIndex((i) => clampIndex(i + 1, options.length));
+        break;
+      case "ArrowUp":
+        event.preventDefault();
+        if (!open) openList(selectedIndex);
+        else setActiveIndex((i) => clampIndex(i - 1, options.length));
+        break;
+      case "Home":
+        if (!open) return;
+        event.preventDefault();
+        setActiveIndex(0);
+        break;
+      case "End":
+        if (!open) return;
+        event.preventDefault();
+        setActiveIndex(options.length - 1);
+        break;
+      case "Enter":
+      case " ":
+        if (!open) return;
+        event.preventDefault();
+        selectIndex(activeIndex);
+        break;
+      case "Escape":
+        if (!open) return;
+        event.preventDefault();
+        closeList();
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div
@@ -77,13 +147,16 @@ export function Select({
       className={labClassName(isUnstyled, styles.root, className, rootSlot.className)}
     >
       <button
+        ref={triggerRef}
         type="button"
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
+        aria-activedescendant={activeOptionId}
         aria-label={aria["aria-label"]}
-        onClick={() => setOpen((current) => !current)}
+        onClick={() => (open ? closeList() : openList())}
+        onKeyDown={onTriggerKeyDown}
         {...triggerSlot.rest}
         className={labClassName(isUnstyled, styles.trigger, undefined, triggerSlot.className)}
       >
@@ -112,23 +185,31 @@ export function Select({
           {...listSlot.rest}
           className={labClassName(isUnstyled, styles.list, undefined, listSlot.className)}
         >
-          {options.map((option) => {
+          {options.map((option, index) => {
             const isSelected = option.value === value;
+            const isActive = index === activeIndex;
             return (
-              <li key={option.value} role="option" aria-selected={isSelected}>
+              <li
+                key={option.value}
+                id={`${listId}-opt-${index}`}
+                role="option"
+                aria-selected={isSelected}
+              >
                 <button
                   type="button"
+                  tabIndex={-1}
                   {...optionSlot.rest}
                   className={labClassName(
                     isUnstyled,
-                    cn(styles.option, isSelected && styles.optionSelected),
+                    cn(
+                      styles.option,
+                      isSelected && styles.optionSelected,
+                      isActive && styles.optionActive,
+                    ),
                     undefined,
                     optionSlot.className,
                   )}
-                  onClick={() => {
-                    onChange(option.value);
-                    setOpen(false);
-                  }}
+                  onClick={() => selectIndex(index)}
                 >
                   <span>{option.label}</span>
                   {isSelected ? (

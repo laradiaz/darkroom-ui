@@ -27,7 +27,7 @@ pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.2
 
 ## Usage
 
-Import component styles once in your app entry (~35 KB):
+Import component styles once in your app entry (~45 KB):
 
 ```tsx
 import "darkroom-ui/style.css";
@@ -82,7 +82,7 @@ import { Hero } from "darkroom-ui/hero";
 import "darkroom-ui/style.css";
 ```
 
-Available subpaths: `button`, `select`, `file-dropzone`, `badge`, `typography`, `layout`, `card`, `hero`, `navigation`, `footer`, `core`.
+Available subpaths: `button`, `select`, `file-dropzone`, `badge`, `typography`, `layout`, `grid`, `divider`, `media`, `card`, `hero`, `navigation`, `footer`, `core`.
 
 ### Design tokens only
 
@@ -94,7 +94,7 @@ Available subpaths: `button`, `select`, `file-dropzone`, `badge`, `typography`, 
 
 | Import | Approx. size |
 |--------|----------------|
-| `darkroom-ui/style.css` | ~35 KB |
+| `darkroom-ui/style.css` | ~45 KB |
 | `darkroom-ui/fonts.css` | ~1 KB CSS + ~87 KB woff2 |
 | `darkroom-ui/tokens.css` | ~1 KB |
 

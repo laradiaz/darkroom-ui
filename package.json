@@ -65,6 +65,21 @@
       "import": "./lib/layout.mjs",
       "require": "./lib/layout.cjs"
     },
+    "./grid": {
+      "types": "./lib/grid.d.ts",
+      "import": "./lib/grid.mjs",
+      "require": "./lib/grid.cjs"
+    },
+    "./divider": {
+      "types": "./lib/divider.d.ts",
+      "import": "./lib/divider.mjs",
+      "require": "./lib/divider.cjs"
+    },
+    "./media": {
+      "types": "./lib/media.d.ts",
+      "import": "./lib/media.mjs",
+      "require": "./lib/media.cjs"
+    },
     "./card": {
       "types": "./lib/card.d.ts",
       "import": "./lib/card.mjs",

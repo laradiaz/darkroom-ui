@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
+import { useDarkroomUIConfig } from "../config/DarkroomUIProvider";
 
-const STORAGE_KEY = "darkroom-ui-theme";
+const DEFAULT_STORAGE_KEY = "darkroom-ui-theme";
 
 export type DarkroomTheme = "light" | "dark" | "system";
 
@@ -19,9 +20,12 @@ function resolveTheme(theme: DarkroomTheme): "light" | "dark" {
 }
 
 export function useDarkroomDarkMode(defaultTheme: DarkroomTheme = "system") {
+  const { themeStorageKey } = useDarkroomUIConfig();
+  const storageKey = themeStorageKey ?? DEFAULT_STORAGE_KEY;
+
   const [theme, setThemeState] = useState<DarkroomTheme>(() => {
     if (typeof window === "undefined") return defaultTheme;
-    const stored = localStorage.getItem(STORAGE_KEY) as DarkroomTheme | null;
+    const stored = localStorage.getItem(storageKey) as DarkroomTheme | null;
     return stored ?? defaultTheme;
   });
 
@@ -39,10 +43,13 @@ export function useDarkroomDarkMode(defaultTheme: DarkroomTheme = "system") {
     return () => mq.removeEventListener("change", handler);
   }, [theme]);
 
-  const setTheme = useCallback((next: DarkroomTheme) => {
-    setThemeState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-  }, []);
+  const setTheme = useCallback(
+    (next: DarkroomTheme) => {
+      setThemeState(next);
+      localStorage.setItem(storageKey, next);
+    },
+    [storageKey],
+  );
 
   const toggle = useCallback(() => {
     setTheme(resolved === "dark" ? "light" : "dark");

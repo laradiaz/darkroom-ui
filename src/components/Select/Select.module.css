@@ -40,6 +40,10 @@
   @apply bg-paper-dark;
 }
 
+.optionActive {
+  @apply bg-paper-dark outline outline-1 outline-offset-[-1px] outline-border;
+}
+
 .check {
   @apply text-text-muted;
 }

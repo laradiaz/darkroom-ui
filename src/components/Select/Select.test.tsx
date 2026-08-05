@@ -8,6 +8,7 @@ afterEach(cleanup);
 const options = [
   { label: "Alpha", value: "a" },
   { label: "Beta", value: "b" },
+  { label: "Gamma", value: "c" },
 ];
 
 describe("Select", () => {
@@ -37,14 +38,31 @@ describe("Select", () => {
       </div>,
     );
 
-    await user.click(screen.getByRole("button", { name: "Pick" }));
+    const trigger = screen.getByRole("button", { name: "Pick" });
+    await user.click(trigger);
     expect(screen.getByRole("listbox")).toBeInTheDocument();
 
-    fireEvent.keyDown(document, { key: "Escape" });
+    fireEvent.keyDown(trigger, { key: "Escape" });
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
 
-    await user.click(screen.getByRole("button", { name: "Pick" }));
+    await user.click(trigger);
     fireEvent.mouseDown(screen.getByRole("button", { name: "Outside" }));
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
+  });
+
+  it("navigates options with arrow keys and selects with Enter", async () => {
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<Select value="a" options={options} onChange={onChange} aria-label="Pick" />);
+
+    const trigger = screen.getByRole("button", { name: "Pick" });
+    trigger.focus();
+    await user.keyboard("{ArrowDown}");
+    expect(screen.getByRole("listbox")).toBeInTheDocument();
+    expect(trigger).toHaveAttribute("aria-activedescendant");
+
+    await user.keyboard("{ArrowDown}{Enter}");
+    expect(onChange).toHaveBeenCalledWith("b");
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument();
   });
 
