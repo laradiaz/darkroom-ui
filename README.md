@@ -2,8 +2,12 @@
 
 Monochrome editorial React component library — warm paper and charcoal tones, CSS-variable light/dark mode, no accent palette.
 
-**Repository:** [github.com/laradiaz/darkroom-ui](https://github.com/laradiaz/darkroom-ui)  
-**npm:** [darkroom-ui](https://www.npmjs.com/package/darkroom-ui)
+| | |
+|---|---|
+| **Site** | [darkroom-ui.dev](https://darkroom-ui.dev) |
+| **Storybook** | [storybook.darkroom-ui.dev](https://storybook.darkroom-ui.dev) |
+| **npm** | [darkroom-ui](https://www.npmjs.com/package/darkroom-ui) |
+| **Repository** | [github.com/laradiaz/darkroom-ui](https://github.com/laradiaz/darkroom-ui) |
 
 ## Install
 
@@ -16,7 +20,7 @@ pnpm add darkroom-ui
 Install a specific version from Git (without npm):
 
 ```bash
-pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.0
+pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.2
 ```
 
 **Peer dependencies:** `react` and `react-dom` (v18+).
@@ -78,6 +82,8 @@ import { Hero } from "darkroom-ui/hero";
 import "darkroom-ui/style.css";
 ```
 
+Available subpaths: `button`, `select`, `file-dropzone`, `badge`, `typography`, `layout`, `card`, `hero`, `navigation`, `footer`, `core`.
+
 ### Design tokens only
 
 ```css
@@ -113,7 +119,15 @@ Dark mode uses the `dark` class on `<html>`:
 <html class="dark">
 ```
 
-Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorage`, and exposes `darkModeEnabled`, `toggle`, and `setTheme`.
+Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorage`, and returns:
+
+| Value | Description |
+|-------|-------------|
+| `theme` | `"light"` \| `"dark"` \| `"system"` |
+| `resolved` | Effective `"light"` \| `"dark"` |
+| `setTheme` | Set preference |
+| `toggle` | Flip light ↔ dark |
+| `darkModeEnabled` | `resolved === "dark"` |
 
 ## Components
 
@@ -149,15 +163,20 @@ Or use `useDarkroomDarkMode()` — toggles `html.dark`, persists to `localStorag
 | `Page`, `Container`, `Section` | Page shell |
 | `SocialLink` | Icon or text social link |
 
+Interactive docs: [storybook.darkroom-ui.dev](https://storybook.darkroom-ui.dev).
+
 ## Development
 
 ```bash
 pnpm install
 pnpm run build
+pnpm test
 pnpm run check-publish
 pnpm run check-publish:full
 pnpm run storybook
 ```
+
+Storybook deploys to GitHub Pages on push to `main` (`pnpm run build-storybook`).
 
 ## Publish
 
