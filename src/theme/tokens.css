@@ -4,7 +4,7 @@
   --color-text: #2d2a26;
   --color-text-muted: #5c5651;
   --color-border: #d4cfc7;
-  /* Always light — text/icons on photo overlays (Hero, MediaCard). Does not flip in dark. */
+  /* Always light — text/icons on photo overlays (Hero, Media). Does not flip in dark. */
   --color-on-media: #faf9f7;
   --color-grid-dot: rgba(45, 42, 38, 0.03);
   --color-body-gradient-end: #f5f3ef;
