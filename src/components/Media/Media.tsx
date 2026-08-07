@@ -1,5 +1,4 @@
 import {
-  useId,
   type HTMLAttributes,
   type ImgHTMLAttributes,
   type ReactNode,
@@ -8,6 +7,7 @@ import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
+import { useStableId } from "../../utils/useStableId";
 import styles from "./Media.module.css";
 
 export type MediaAspect = "square" | "video" | "portrait" | "wide";
@@ -42,7 +42,7 @@ export function Media({
   ...rest
 }: MediaProps) {
   const isUnstyled = useDarkroomUnstyled(unstyled);
-  const captionId = useId();
+  const captionId = useStableId();
   const rootSlot = splitSlotClassName(slotProps?.root);
   const imageWrapSlot = splitSlotClassName(slotProps?.imageWrap);
   const imageSlot = splitSlotClassName(slotProps?.image);

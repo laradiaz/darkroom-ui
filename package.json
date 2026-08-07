@@ -116,8 +116,8 @@
     "prepublishOnly": "pnpm run build && pnpm run check-publish && pnpm test"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "devDependencies": {
     "@fontsource/cormorant-garamond": "^5.2.5",

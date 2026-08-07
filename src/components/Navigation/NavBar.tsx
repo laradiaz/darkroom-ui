@@ -1,5 +1,4 @@
 import {
-  useId,
   useState,
   type AnchorHTMLAttributes,
   type HTMLAttributes,
@@ -9,6 +8,7 @@ import { NavMenuButton, type NavMenuButtonProps } from "../Button";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
+import { useStableId } from "../../utils/useStableId";
 import styles from "./NavBar.module.css";
 
 export type NavItem = {
@@ -45,7 +45,7 @@ export function NavBar({
 }: NavBarProps) {
   const isUnstyled = useDarkroomUnstyled(unstyled);
   const [open, setOpen] = useState(false);
-  const navId = useId();
+  const navId = useStableId();
 
   const rootSlot = splitSlotClassName(slotProps?.root);
   const logoSlot = splitSlotClassName(slotProps?.logo);

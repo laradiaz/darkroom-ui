@@ -1,6 +1,5 @@
 import {
   useEffect,
-  useId,
   useRef,
   useState,
   type ButtonHTMLAttributes,
@@ -11,6 +10,7 @@ import { cn } from "../../utils/cn";
 import { labClassName } from "../../utils/labClassName";
 import { splitSlotClassName } from "../../utils/mergeSlotProps";
 import { useDarkroomUnstyled } from "../../utils/useDarkroomUnstyled";
+import { useStableId } from "../../utils/useStableId";
 import styles from "./Select.module.css";
 
 export type SelectOption = {
@@ -59,7 +59,7 @@ export function Select({
   const [activeIndex, setActiveIndex] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const listId = useId();
+  const listId = useStableId();
   const selected = options.find((option) => option.value === value);
   const selectedIndex = Math.max(
     0,
