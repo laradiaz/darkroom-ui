@@ -39,6 +39,43 @@ Load fonts separately (optional, ~87 KB woff2):
 import "darkroom-ui/fonts.css";
 ```
 
+Bundled defaults: **Cormorant Garamond** (`--font-display`) and **DM Sans** (`--font-sans`). Override anytime CSS variables if you bring your own faces:
+
+```css
+:root {
+  --font-display: "Newsreader", serif;
+  --font-sans: "IBM Plex Mono", monospace; /* or keep a sans for UI */
+}
+```
+
+### Recommended free fonts
+
+Editorial serifs (display / long-form):
+
+| Font | Notes |
+|------|--------|
+| [Newsreader](https://fonts.google.com/specimen/Newsreader) | Contemporary, strong for digital reading |
+| [EB Garamond](https://fonts.google.com/specimen/EB+Garamond) | Literary classic |
+| [Noticia Text](https://fonts.google.com/specimen/Noticia+Text) | Sturdy newspaper text |
+| [Instrument Serif](https://fonts.google.com/specimen/Instrument+Serif) | Expressive headlines (less ideal as body) |
+
+Typewriter / mono:
+
+| Font | Notes |
+|------|--------|
+| [Courier Prime](https://fonts.google.com/specimen/Courier+Prime) | Polished Courier |
+| [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) | Clean modern mono |
+| [Cutive Mono](https://fonts.google.com/specimen/Cutive+Mono) | Warm typewriter feel |
+| [Special Elite](https://fonts.google.com/specimen/Special+Elite) | Distressed accent type (not body) |
+
+Pairings to try:
+
+| Pairing | Mood |
+|---------|------|
+| Newsreader + IBM Plex Mono | Modern editorial |
+| EB Garamond + Courier Prime | Literary / archive |
+| Instrument Serif + Cutive Mono | Fashion or art magazine |
+
 ```tsx
 import {
   Button,
