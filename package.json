@@ -1,6 +1,6 @@
 {
   "name": "darkroom-ui",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Monochrome editorial React component library with CSS-variable light/dark theming",
   "type": "module",
   "license": "MIT",
