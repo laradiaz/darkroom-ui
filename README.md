@@ -20,7 +20,7 @@ pnpm add darkroom-ui
 Install a specific version from Git (without npm):
 
 ```bash
-pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.2
+pnpm add git+ssh://git@github.com:laradiaz/darkroom-ui.git#v0.2.4
 ```
 
 **Peer dependencies:** `react` and `react-dom` (v18+).
