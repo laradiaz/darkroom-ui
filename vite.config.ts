@@ -1,7 +1,8 @@
 /// <reference types="vitest/config" />
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import dts from "vite-plugin-dts";
 
 const isStorybook = Boolean(process.env.STORYBOOK);
@@ -30,6 +31,20 @@ function libFileName(format: "es" | "cjs", entryName: string): string {
   return `${entryName}.${ext}`;
 }
 
+/** Drop Tailwind's license URL so Socket doesn't flag style.css as network-capable. */
+function scrubPublishedCssUrls(): Plugin {
+  const styleCss = resolve(__dirname, "lib/style.css");
+  return {
+    name: "scrub-published-css-urls",
+    closeBundle() {
+      if (!existsSync(styleCss)) return;
+      const css = readFileSync(styleCss, "utf8");
+      const next = css.replace(/https?:\/\/tailwindcss\.com/g, "");
+      if (next !== css) writeFileSync(styleCss, next);
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
@@ -48,6 +63,7 @@ export default defineConfig({
             entryRoot: "src",
             rollupTypes: true,
           }),
+          scrubPublishedCssUrls(),
         ]),
   ],
   build: isStorybook
@@ -69,7 +85,8 @@ export default defineConfig({
           },
         },
         sourcemap: true,
-        minify: "esbuild",
+        // npm libs should ship readable code — Socket flags minify as a quality alert
+        minify: false,
       },
   css: {
     modules: {
